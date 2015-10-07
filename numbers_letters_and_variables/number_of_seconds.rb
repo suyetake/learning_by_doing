@@ -24,13 +24,15 @@ puts "There are #{hours_in_day} hours in a day"
 puts "There are #{days_in_week} days in a week"
 
 # calculate magnitude of seconds in one hour/day/week values
+
+seconds_in_hour = seconds_in_minute * minutes_in_hour
+seconds_in_day = seconds_in_hour * hours_in_day
+seconds_in_week = seconds_in_day * days_in_week
+
 puts 'That means there are:'
-puts "  #{seconds_in_hour = \
-  seconds_in_minute * minutes_in_hour} seconds in an hour,"
-puts "  #{seconds_in_day = \
-  seconds_in_hour * hours_in_day} seconds in a day,"
-puts "  #{seconds_in_week = \
-  seconds_in_day * days_in_week} seconds in a week"
+puts "  #{seconds_in_hour} seconds in an hour,"
+puts "  #{seconds_in_day} seconds in a day,"
+puts "  #{seconds_in_week} seconds in a week"
 
 # calculate seconds in a year leveraging above calcs
 seconds_in_year = seconds_in_week * weeks_in_year
