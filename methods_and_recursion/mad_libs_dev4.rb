@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# Methods and Recursion
+# Methods and Recursion 
 # Homework #1
 # Pivotal Story 105170392
 
@@ -17,11 +17,11 @@ def field_assignment(field_name)
 end
 
 madlib_adj_field = []
-madlib_adj_field = ['these', 'will', 'get', 'overwritten']
+madlib_adj_field = ["these","will","get","overwritten"]
 madlib_noun_field = []
-madlib_noun_field = ['these', 'will', 'get', 'overwritten']
+madlib_noun_field = ["these","will","get","overwritten"]
 madlib_verb_field = []
-madlib_verb_field = ['these', 'will', 'get', 'overwritten']
+madlib_verb_field = ["these","will","get","overwritten"]
 
 adj_field_name = 'Please give me an adjective: ==> '
 noun_field_name = 'Please give me a noun: ==> '
@@ -110,6 +110,9 @@ puts madlib_verb_field[3]
 
 # code models for embedding arrays in string outputs
 puts
-puts 'here is the adj array: ' + madlib_adj_field.to_s
-puts "here is the noun array within a string: #{madlib_noun_field}"
-puts "here is a verb element within a string: #{madlib_verb_field[0]}"
+puts "here is the adj array: " + madlib_adj_field.to_s
+puts "here is the noun array within a string: #{madlib_noun_field.to_s}"
+puts "here is a verb element within a string: #{madlib_verb_field[0].to_s}"
+
+
+
