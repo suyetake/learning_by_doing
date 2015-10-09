@@ -49,7 +49,7 @@ puts
 puts "A vacation is when you take a trip to some #{field_1} place"
 puts "with your #{field_2} family. Usually you go to some place"
 puts "that is near a/an #{field_3} or up on a/an #{field_4}."
-puts "A good vacation place is one where you can ride #{field_5}{"
+puts "A good vacation place is one where you can ride #{field_5}"
 puts "or play #{field_6} or go hunting for #{field_7} . I like"
 puts "to spend my time #{field_8} or #{field_9}."
 puts 'When parents go on a vacation, they spend their time eating'
