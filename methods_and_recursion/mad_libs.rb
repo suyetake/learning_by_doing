@@ -5,15 +5,15 @@
 # Pivotal Story 105170392
 
 # Welcoming statements - must hold off for cucumber tests
-# #puts
-# #puts 'Welcome to MadLibs'
-# #puts
-# #puts 'I am going to make a story with your words.'
-# #puts
-# #puts
+# #puts ''
+# #puts '' 'Welcome to MadLibs'
+# #puts ''
+# #puts '' 'I am going to make a story with your words.'
+# #puts ''
+# #puts ''
 
 def ask_for(this_kind_of_word)
-  puts
+  puts ''
   print "Please give me #{this_kind_of_word} ==> "
   gets.chomp.to_s
 end
@@ -38,14 +38,14 @@ field_17 = ask_for('an adjective')
 field_18 = ask_for('a number')
 field_19 = ask_for('a plural noun')
 
-puts
-puts
+puts ''
+puts ''
 puts 'Here is the story..'
-puts
-puts
+puts ''
+puts ''
 puts 'MADLIBS VACATIONS'
 puts '-----------------'
-puts
+puts ''
 puts "A vacation is when you take a trip to some #{field_1} place"
 puts "with your #{field_2} family. Usually you go to some place"
 puts "that is near a/an #{field_3} or up on a/an #{field_4}."
