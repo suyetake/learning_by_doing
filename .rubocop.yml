@@ -3,3 +3,4 @@ AllCops:
    - "Guardfile"
    - "Gemfile"
    - "homework_tester/**/*"
+   - "methods_and_recursion/mad_libs_dev*"
