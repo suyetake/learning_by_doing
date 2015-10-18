@@ -27,8 +27,8 @@ play_array = (1..10).to_a
 
 # calculate stuff needed for the output lines
 blastoff_string = 'T-' + play_array.reverse.join(', ') + '...  BLASTOFF!'
-blastoff_string2 = 'T-' + play_array.reverse.join(', ') + '...  BLASTOFF!'
-blastoff_string3 = 'T-' + play_array.reverse.join(', ') + '... BLASTOFF!'
+# blastoff_string2 = 'T-' + play_array.reverse.join(', ') + '...  BLASTOFF!'
+# blastoff_string3 = 'T-' + play_array.reverse.join(', ') + '... BLASTOFF!'
 
 index = 3
 first_four = play_array[0..3].join(', ')
@@ -49,8 +49,8 @@ postpend = 6
 puts play_array.join('...') + '...'
 
 puts blastoff_string
-puts blastoff_string2
-puts blastoff_string3
+# puts blastoff_string2
+# puts blastoff_string3
 
 puts "The last element is #{play_array.last}"
 puts "The first element is #{play_array.first}"
