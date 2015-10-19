@@ -9,28 +9,43 @@
 
 # instead of an iterator, use an array 1-100
 numbers = (1..100).to_a
-value = 101
+# value = 101
 
 # place output to an array
-output = []
+fizz_buzz_output = []
 
-# loop through 100
-# while numbers != nil do
-# while !numbers.index.nil?
-while value > 1
-  value = numbers.pop
+numbers.each do |value|
   if value % 3 == 0 && value % 5 == 0
-    output.push('FizzBuzz')
+    fizz_buzz_output.push('FizzBuzz')
   elsif value % 3 == 0
-    output.push('Fizz')
+    fizz_buzz_output.push('Fizz')
   elsif value % 5 == 0
-    output.push('Buzz')
+    fizz_buzz_output.push('Buzz')
   else
-    output.push(value)
+    fizz_buzz_output.push(value)
   end
 end
 
-puts output.reverse
+puts fizz_buzz_output
+
+# loop through 100
+# numbers.each do
+# while numbers != nil do
+# while !numbers.index.nil?
+# while value > 1
+#   value = numbers.pop
+#   if value % 3 == 0 && value % 5 == 0
+#     output.push('FizzBuzz')
+#   elsif value % 3 == 0
+#     output.push('Fizz')
+#   elsif value % 5 == 0
+#     output.push('Buzz')
+#   else
+#     output.push(value)
+#   end
+# end
+#
+# puts output.reverse
 
 ### Accepted fizz_buzz.rb Solution ###
 
