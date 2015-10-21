@@ -7,15 +7,21 @@ class CashRegister
 
   def purchase(purchase)
     @balance += purchase.to_f
+    @balance.round(2)
   end
 
   def total
-    @balance
+    @balance.round(2)
   end
 
   def pay_cash(cash)
     change = cash.to_f - @balance
-    @balance = 0.0
-    change
+    if change.round(2) < 0.0
+      puts "#{change.abs} more money is needed, please.."
+      @balance = change.abs
+    else
+      @balance = 0.0
+      change
+    end
   end
 end
