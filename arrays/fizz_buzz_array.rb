@@ -9,59 +9,23 @@
 
 # instead of an iterator, use an array 1-100
 numbers = (1..100).to_a
-# value = 101
 
-# place output to an array
-fizz_buzz_output = []
-
-numbers.each do |value|
+# extracted this method and
+# eliminated array assignments..
+def fizz_buzz_value(value)
   if value % 3 == 0 && value % 5 == 0
-    fizz_buzz_output.push('FizzBuzz')
+    'FizzBuzz'
   elsif value % 3 == 0
-    fizz_buzz_output.push('Fizz')
+    'Fizz'
   elsif value % 5 == 0
-    fizz_buzz_output.push('Buzz')
+    'Buzz'
   else
-    fizz_buzz_output.push(value)
+    value
   end
 end
 
-puts fizz_buzz_output
+# ..so the array assignment can occur here
+numbers.map! { |x| fizz_buzz_value(x) }
 
-# loop through 100
-# numbers.each do
-# while numbers != nil do
-# while !numbers.index.nil?
-# while value > 1
-#   value = numbers.pop
-#   if value % 3 == 0 && value % 5 == 0
-#     output.push('FizzBuzz')
-#   elsif value % 3 == 0
-#     output.push('Fizz')
-#   elsif value % 5 == 0
-#     output.push('Buzz')
-#   else
-#     output.push(value)
-#   end
-# end
-#
-# puts output.reverse
-
-### Accepted fizz_buzz.rb Solution ###
-
-# initialize current_number
-# current_number = 0
-#
-# # loop current_number through 100
-# while current_number <= 99
-#   current_number += 1
-#   if current_number % 3 == 0 && current_number % 5 == 0
-#     puts 'FizzBuzz'
-#   elsif current_number % 3 == 0
-#     puts 'Fizz'
-#   elsif current_number % 5 == 0
-#     puts 'Buzz'
-#   else
-#     puts current_number
-#   end
-# end
+# now this array contains the fizzbuzz output
+puts numbers
