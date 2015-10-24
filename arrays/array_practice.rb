@@ -12,6 +12,8 @@ play_array = (1..10).to_a
 
 # Learnings:
 
+# FEEDBACK:
+# dup_array = orig_array.dup
 # surprised when later changes to dup_array affected orig_array
 # dup_array = orig_array
 # so this was the better way to duplicate arrays
@@ -31,9 +33,12 @@ blastoff_string = 'T-' + play_array.reverse.join(', ') + '...  BLASTOFF!'
 # blastoff_string3 = 'T-' + play_array.reverse.join(', ') + '... BLASTOFF!'
 
 index = 3
-first_four = play_array[0..3].join(', ')
+# first_four = play_array[0..3].join(', ')
+first_four = play_array.first(4)
 
-shortened_array = play_array.take(10)
+# shortened_array = play_array.take(10)
+shortened_array = play_array.dup
+
 shortened_array.delete(5)
 shortened_array.delete(6)
 shortened_array.delete(7)
@@ -42,8 +47,8 @@ rotated_array = shortened_array.take(7)
 rotated_array.push(5)
 rotated_array.rotate(-1)
 
-prepend = 5
-postpend = 6
+# prepend = 5
+# postpend = 6
 
 # create the requisite output lines in PV#105170810
 puts play_array.join('...') + '...'
@@ -62,12 +67,12 @@ puts "The first four elements are '#{first_four}'"
 print 'If we delete 5, 6 and 7 from the array, '
 puts "we're left with [#{shortened_array.join(',')}]"
 
-print "If we add #{prepend} at the beginning of the array, "
-shortened_array.insert(0, prepend)
+print "If we add 5 at the beginning of the array, "
+shortened_array.insert(0, 5)
 puts "we're left with [#{shortened_array.join(',')}]"
 
-print "If we add #{postpend} at the end of the array, "
-shortened_array.push(postpend)
+print "If we add 6 at the end of the array, "
+shortened_array.push(6)
 puts "we're left with [#{shortened_array.join(',')}]"
 
 print "Only the elements #{play_array.select { |num| num > 8 }} "
