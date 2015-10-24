@@ -1,14 +1,18 @@
 # BestPriceChecker class
 # Homework 2 in Builtin and Custom Objects slide deck
 class BestPriceChecker
-  attr_reader :product_name, :price, :quantity, :brand
+  attr_reader :product_name, :price, :quantity
 
-  def initialize(product_name, price, quantity, brand)
+  def product_name
+    @product_name
+  end
 
+  def initialize(p = "foo", price = 2.00, quantity = 1)
+      @product_name = p
   end
 
   def add_product
-
+    puts "Product has been added"
   end
   def add_price
 
@@ -21,7 +25,7 @@ class BestPriceChecker
   end
 
   # discover ppq (price per quantity) and store value
-  def calc_ppq
+  def calc_price_per_quantity
 
   end
 
@@ -30,3 +34,6 @@ class BestPriceChecker
   def best_price(product_name)
   end
 end
+best_price_checker = BestPriceChecker.new
+best_price_checker.add_product()
+
