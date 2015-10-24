@@ -67,11 +67,11 @@ puts "The first four elements are '#{first_four}'"
 print 'If we delete 5, 6 and 7 from the array, '
 puts "we're left with [#{shortened_array.join(',')}]"
 
-print "If we add 5 at the beginning of the array, "
+print 'If we add 5 at the beginning of the array, '
 shortened_array.insert(0, 5)
 puts "we're left with [#{shortened_array.join(',')}]"
 
-print "If we add 6 at the end of the array, "
+print 'If we add 6 at the end of the array, '
 shortened_array.push(6)
 puts "we're left with [#{shortened_array.join(',')}]"
 
