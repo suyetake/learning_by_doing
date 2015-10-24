@@ -5,15 +5,18 @@ class CashRegister
     @balance = 0.00
   end
 
+  # FEEDBACK: this rounding was deemed unnecessary
+  # by the format which accomplishes the same thing
+
   # rounding method, which assumes 2 decimal places
   # unless told otherwise by passing a second parameter
-  def round_to(amount, d_places = 2)
-    amount.round(d_places)
-  end
+  # def round_to(amount, d_places = 2)
+  #  amount.round(d_places)
+  # end
 
   # to get the output to two (or other) decimal places
   def to_dollar(amount)
-    round_to(@balance)
+    # round_to(@balance)
     format('%.2f', amount)
   end
 
