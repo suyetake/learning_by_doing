@@ -4,40 +4,15 @@
 # that has integers 1-10
 play_array = (1..10).to_a
 
-# my observations while coding this:
-# puts play_array
-# puts play_array.class
-# print play_array
-# puts ''
-
-# Learnings:
-
-# FEEDBACK:
-# dup_array = orig_array.dup
-# surprised when later changes to dup_array affected orig_array
-# dup_array = orig_array
-# so this was the better way to duplicate arrays
-# dup_array = orig_array.take(10)
-
-# working, but tricky to chop the last comma:
-# print 'T-'
-# play_array.reverse_each {|x| print x, ', '}
-# print '... BLASTOFF!'
-
-# working, but better practice to place in string
-# print 'T-' + play_array.reverse.join(', ') + '... BLASTOFF!'
-
 # calculate stuff needed for the output lines
 blastoff_string = 'T-' + play_array.reverse.join(', ') + '...  BLASTOFF!'
-# blastoff_string2 = 'T-' + play_array.reverse.join(', ') + '...  BLASTOFF!'
-# blastoff_string3 = 'T-' + play_array.reverse.join(', ') + '... BLASTOFF!'
 
 index = 3
-# first_four = play_array[0..3].join(', ')
 first_four = play_array.first(4)
+# first_four = play_array[0..3].join(', ')
 
-# shortened_array = play_array.take(10)
 shortened_array = play_array.dup
+# shortened_array = play_array.take(10)
 
 shortened_array.delete(5)
 shortened_array.delete(6)
@@ -54,8 +29,6 @@ rotated_array.rotate(-1)
 puts play_array.join('...') + '...'
 
 puts blastoff_string
-# puts blastoff_string2
-# puts blastoff_string3
 
 puts "The last element is #{play_array.last}"
 puts "The first element is #{play_array.first}"
