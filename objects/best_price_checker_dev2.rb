@@ -2,6 +2,9 @@
 # Homework 2 in Builtin and Custom Objects slide deck
 # :brand, :store, :product, :price, :quantity, :unit, :quantity_price
 
+# SPAGHETTI CODE AT THE MOMENT.. TRYING SO MANY APPROACHES
+# SEE "PROBLEM" COMMENTS BELOW
+
 class BestPriceChecker
   attr_reader :brand, :store, :product, :price, :quantity, :unit, :quantity_price
 
@@ -10,7 +13,7 @@ class BestPriceChecker
     product = 'ketchup',
     price = 2.00,
     quantity = 12,
-    # for now, assume unit is always ounces
+    # for now, for quantity_price calculations, assume unit is always ounces
     unit = 'oz')
     @brand = brand
     @store = store
@@ -19,19 +22,15 @@ class BestPriceChecker
     @quantity = quantity
     @unit = unit
     @quantity_price = price / quantity
-    # apply_price_per_quantity(@product1_hash)
-    # puts ''
-    # puts 'Here is the product to be compared:'
-    # puts @product1_hash
-    # puts ''
   end
 
   def display_name
     "#{store} #{brand} #{product}"
   end
 
-  def display_quantity_price(productA)
-    "to_dollar(#{productA.quantity_price})"
+  ## PROBLEM HERE: it won't convert to two decimal places when called later
+  def self.display_quantity_price
+    format('%.2f', @quantity_price)
   end
 
   def apply_price_per_quantity(product_hash)
@@ -59,8 +58,13 @@ class BestPriceChecker
     puts "Here is the new product: #{new_product.brand} #{new_product.product} at #{new_product.store}"
     puts "Here is the prior product: #{prior_product.brand} #{prior_product.product} at #{prior_product.store}"
     puts "new product unit price is: #{new_product.quantity_price}"
-    puts "prior product unit price is: to_dollar(#{prior_product.quantity_price})"
-    puts "prior product unit price is: to_dollar(#{prior_product.quantity_price})"
+    print "current product unit price is: "
+
+    ## PROBLEM HERE: it won't convert to two decimal places when called
+    # puts new_product.display_quantity_price
+    puts new_product.quantity_price.round(2)
+
+    puts "prior product unit price is: #{prior_product.quantity_price}"
 
     if new_product.quantity_price <  prior_product.quantity_price
       puts "#{new_product.display_name} is a better priced product!"
