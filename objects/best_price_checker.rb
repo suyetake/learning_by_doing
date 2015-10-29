@@ -1,120 +1,85 @@
 # BestPriceChecker class
 # Homework 2 in Builtin and Custom Objects slide deck
-# :brand, :store, :product, :price, :quantity, :unit, :quantity_price
-
+# for now, assume unit is always ounces
 class BestPriceChecker
-  attr_reader :brand, :store, :product, :price, :quantity, :unit, :quantity_price
-
-  def initialize(brand = 'Generic',
-    store = 'Safeway',
-    product = 'ketchup',
-    price = 2.00,
-    quantity = 12,
-    # for now, assume unit is always ounces
-    unit = 'oz')
-    @brand = brand
-    @store = store
-    @product = product
-    @price = price
-    @quantity = quantity
-    @unit = unit
-    @quantity_price = price / quantity
-    # apply_price_per_quantity(@product1_hash)
-    # puts ''
-    # puts 'Here is the product to be compared:'
-    # puts @product1_hash
-    # puts ''
-  end
-
-  def display_name
-    "#{store} #{brand} #{product}"
-  end
-
-  def display_quantity_price(productA)
-    "to_dollar(#{productA.quantity_price})"
-  end
-
-  def apply_price_per_quantity(product_hash)
-    product_hash[:price_per_quantity] =
-      product_hash[:price] /
-        product_hash[:quantity]
-  end
-
-  def display_best_priced_product
-    @product1_hash[:price] = to_dollar(@product1_hash[:price])
-    @product1_hash[:price_per_quantity] = to_dollar(@product1_hash[:price_per_quantity])
-    puts ''
+  # assign an initial product when no values are passed in
+  def initialize(brand = 'Generic', store = 'Safeway', product = 'ketchup', price = 2.00, quantity = 12, unit = 'oz')
+    @orig_product = {}
+    @orig_product[:brand] = brand
+    @orig_product[:store] = store
+    @orig_product[:product] = product
+    @orig_product[:price] = price
+    @orig_product[:quantity] = quantity
+    @orig_product[:unit] = unit
+    @orig_product[:price_per_quantity] =
+      @orig_product[:price] /
+        @orig_product[:quantity]
+    @orig_product[:price] = to_dollar(@orig_product[:price])
+    @orig_product[:price_per_quantity] = to_dollar(@orig_product[:price_per_quantity])
     puts 'Here is the best priced product so far:'
-    puts @product1_hash
-    print 'it costs $' + @product1_hash[:price_per_quantity]
+    puts @orig_product
+    print 'it costs $' + @orig_product[:price_per_quantity]
     puts ' per ounce'
     puts ''
   end
 
-  def self.to_dollar(amount)
+  # convert amount to two decimal places for string outputs in $
+  def to_dollar(amount)
     format('%.2f', amount)
   end
 
-  def self.compare_products(prior_product, new_product)
-    puts "Here is the new product: #{new_product.brand} #{new_product.product} at #{new_product.store}"
-    puts "Here is the prior product: #{prior_product.brand} #{prior_product.product} at #{prior_product.store}"
-    puts "new product unit price is: #{new_product.quantity_price}"
-    puts "prior product unit price is: to_dollar(#{prior_product.quantity_price})"
-    puts "prior product unit price is: to_dollar(#{prior_product.quantity_price})"
+  # make another hash of product to compare the current product to:
+  def another_product(brand = 'Heinz', store = 'Target', product = 'ketchup', price = 3.00, quantity = 16, unit = 'oz')
+    @another_product = {}
+    @another_product[:brand] = brand
+    @another_product[:store] = store
+    @another_product[:product] = product
+    @another_product[:price] = price
+    @another_product[:quantity] = quantity
+    @another_product[:unit] = unit
+    @another_product[:price_per_quantity] =
+      @another_product[:price] /
+        @another_product[:quantity]
+    @another_product[:price] = to_dollar(@another_product[:price])
+    @another_product[:price_per_quantity] = to_dollar(@another_product[:price_per_quantity])
+    puts 'Here is another product:'
+    puts @another_product
+    print 'it costs $' + @another_product[:price_per_quantity]
+    puts ' per ounce'
+    puts ''
+  end
 
-    if new_product.quantity_price <  prior_product.quantity_price
-      puts "#{new_product.display_name} is a better priced product!"
-      # puts new_product
-
-      # assign this to be the new best priced product for future comparisons:
-      # prior_product = new_product
+  # Compare price per quantity across the initial product and the product hash created above
+  # then return the lowest brand name and price per ounce
+  # and reassign the initial product hash to the lowest priced product
+  # NOTE: with default inputs, the second time this method is called, the products will match
+  def best_price
+    puts 'Comparing both..'
+    puts''
+    if @orig_product[:price_per_quantity] == @another_product[:price_per_quantity]
+      print "Both #{@orig_product[:store]} #{@orig_product[:product]} and "
+      puts "#{@another_product[:store]} #{@another_product[:product]}"
+      puts "cost the same at $#{@orig_product[:price_per_quantity]} per ounce."
+    elsif @orig_product[:price_per_quantity] < @another_product[:price_per_quantity]
+      print "#{@orig_product[:store]} #{@orig_product[:product]} is still "
+      puts "the best price at $#{@orig_product[:price_per_quantity]} per ounce."
     else
-      puts "#{new_product.display_name} is still the better priced product!"
+      # @orig_product[:price_per_quantity] > @another_product[:price_per_quantity]
+      print "#{@another_product[:store]} #{@another_product[:product]} is now"
+      puts " the best price at $#{@another_product[:price_per_quantity]} per ounce."
+
+      # assign the newer product as the new best priced product:
+      @orig_product = @another_product
     end
+    puts''
   end
-
-  def self.get_another_product_to_compare
-    @product2_hash = BestPriceChecker.new(
-      brand = 'Heinz',
-      store = 'Target',
-      product = 'ketchup',
-      price = 2.84,
-      quantity = 32,
-      unit = 'oz')
-    apply_price_per_quantity(@product2_hash)
-    puts 'Another product has been added'
-    compare_products(@product1_hash, @product2_hash)
-    puts 'Products have been compared'
-  end
-
-  # get_another_product_to_compare
-  # apply_price_per_quantity(@product2_hash)
-  # compare_products(@product1_hash, @product2_hash)
-  # display_best_priced_product
-
-#  @product1_hash.get_another_product_to_compare
-
 end
-
-
-product3 = BestPriceChecker.new
-
-product4 = BestPriceChecker.new(
-  brand = 'Market Pantry',
-  store = 'Target',
-  product = 'ketchup',
-  price = 3.00,
-  quantity = 16,
-  unit = 'oz')
-BestPriceChecker.compare_products(product3, product4)
-
-product5 = BestPriceChecker.new(
-  brand = 'Market Pantry',
-  store = 'Target',
-  product = 'mustard',
-  price = 3.00,
-  quantity = 160,
-  unit = 'oz')
-# BestPriceChecker.compare_products(product4, product5)
-# product3.compare_products(product3, product4)
-# product3.display_best_priced_product
+product1 = BestPriceChecker.new
+product1.another_product
+product1.best_price
+product1.another_product('generic', 'WalMart', 'ketchup', 1.00, 8, 'oz')
+product1.best_price
+product1.another_product
+product1.best_price
+product1.another_product('generic', 'King Sooper', 'ketchup', 1.00, 8, 'oz')
+product1.best_price
