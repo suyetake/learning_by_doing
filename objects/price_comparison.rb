@@ -4,10 +4,6 @@ require_relative '../objects/product'
 # all code makes rubocop happy,
 # commented out extra displays and logic not asked for
 class PriceComparison
-  def to_dollar(amount)
-    format('%.2f', amount)
-  end
-
   def display_next
     print "next product is #{@next_product.name} at "
     print "$#{to_dollar(@next_product.price)} "
@@ -34,32 +30,38 @@ class PriceComparison
     # display_best
     @current_product
   end
+
+  private
+
+  def to_dollar(amount)
+    format('%.2f', amount)
+  end
 end
 
-## Tests
-## second price (Kroger) is better
-heinz = Product.new('Heinz', 5.75, 15)
-store_brand = Product.new('Kroger', 3.00, 12)
-
-comparitor = PriceComparison.new
-
-better1 = comparitor.better_price(heinz, store_brand)
-puts "The better product is the #{better1.name} brand"
-
-## prices are equal, so first product (Heinz) remains
-heinz = Product.new('Heinz', 3.00, 12)
-store_brand = Product.new('Kroger', 3.00, 12)
-
-comparitor = PriceComparison.new
-
-better2 = comparitor.better_price(heinz, store_brand)
-puts "The better product is the #{better2.name} brand"
-
-## first price (Heinz) is better
-heinz = Product.new('Heinz', 3.00, 12)
-store_brand = Product.new('Kroger', 5.75, 15)
-
-comparitor = PriceComparison.new
-
-better3 = comparitor.better_price(heinz, store_brand)
-puts "The better product is the #{better3.name} brand"
+# ## Tests
+# ## second price (Kroger) is better
+# heinz = Product.new('Heinz', 5.75, 15)
+# store_brand = Product.new('Kroger', 3.00, 12)
+#
+# comparitor = PriceComparison.new
+#
+# better1 = comparitor.better_price(heinz, store_brand)
+# puts "The better product is the #{better1.name} brand"
+#
+# ## prices are equal, so first product (Heinz) remains
+# heinz = Product.new('Heinz', 3.00, 12)
+# store_brand = Product.new('Kroger', 3.00, 12)
+#
+# comparitor = PriceComparison.new
+#
+# better2 = comparitor.better_price(heinz, store_brand)
+# puts "The better product is the #{better2.name} brand"
+#
+# ## first price (Heinz) is better
+# heinz = Product.new('Heinz', 3.00, 12)
+# store_brand = Product.new('Kroger', 5.75, 15)
+#
+# comparitor = PriceComparison.new
+#
+# better3 = comparitor.better_price(heinz, store_brand)
+# puts "The better product is the #{better3.name} brand"
