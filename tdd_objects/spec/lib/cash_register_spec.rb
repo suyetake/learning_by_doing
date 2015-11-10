@@ -8,12 +8,11 @@ describe CashRegister do
     expect(subject.total).to eq(0)
   end
 
-  it '#purchase should add to the total' do
+  it '#purchase should add to the total, pay will subtract from total \
+and give change, new total will be zero' do
     expect(subject.purchase(3.78)).to eq(3.78)
     expect(subject.total).to eq(3.78)
-    expect(subject.pay(5.00)).to eq("Your change is $1.22")
+    expect(subject.pay(5.00)).to eq('Your change is $1.22')
+    expect(subject.total).to eq(0.0)
   end
-
 end
-
-# register.pay(5.00)  # => "Your change is $1.22"
