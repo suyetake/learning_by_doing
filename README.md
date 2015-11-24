@@ -1,34 +1,57 @@
 # learning_by_doing
-Description: Homework assignments for the Building the Toolbelt of a Junior Ruby on Rails developer class I took in 2015
+> Description: Homework assignments for the Building the Toolbelt of a
+ Junior Ruby on Rails developer class I took in 2015
 
-< My notes from the coding of this assignment:
+### Objects directory: 
+### Rewrote Product and Price_Comparison classes from scratch to achieve simplicity:
 
-```
-# my observations while coding this:
-# puts play_array
-# puts play_array.class
-# print play_array
-# puts ''
+heinz = Product.new('Heinz', 5.75, 15)
 
-# Learnings:
+store_brand = Product.new('Kroger', 3.00, 12)
 
-# FEEDBACK:
-# orig_array.dup == can be used to assignment to a dup_array
-# play_array.clear == play_array.pop(play_array.length)
+comparitor = PriceComparison.new
 
-# surprised when later changes to dup_array affected orig_array
-# dup_array = orig_array
+better = comparitor.better_price(heinz, store_brand)
 
-# so this was another way to duplicate arrays:
-# dup_array = orig_array.take(10)
-# yet this was the better way to duplicate arrays:
-# dup_array = orig_array.dup
+puts "The better product is the #{better.name} brand"
 
-# working, but tricky to chop the last comma:
-# print 'T-'
-# play_array.reverse_each {|x| print x, ', '}
-# print '... BLASTOFF!'
+### Tests can be run in-line after the Class code or in irb:
 
-# working, but better practice to place in string
-# print 'T-' + play_array.reverse.join(', ') + '... BLASTOFF!'
-```
+> #### Tests
+> irb -r './price_comparison.rb'
+
+> ### second price (Kroger) is better
+> heinz = Product.new('Heinz', 5.75, 15)
+> store_brand = Product.new('Kroger', 3.00, 12)
+> 
+> comparitor = PriceComparison.new
+> 
+> better1 = comparitor.better_price(heinz, store_brand)
+> puts "The better product is the #{better1.name} brand"
+> 
+> ### prices are equal, so first product (Heinz) remains
+> heinz = Product.new('Heinz', 3.00, 12)
+> store_brand = Product.new('Kroger', 3.00, 12)
+> 
+> comparitor = PriceComparison.new
+> 
+> better2 = comparitor.better_price(heinz, store_brand)
+> puts "The better product is the #{better2.name} brand"
+> 
+> ### first price (Heinz) is better
+> heinz = Product.new('Heinz', 3.00, 12)
+> store_brand = Product.new('Kroger', 5.75, 15)
+> 
+> comparitor = PriceComparison.new
+> 
+> better3 = comparitor.better_price(heinz, store_brand)
+> puts "The better product is the #{better3.name} brand"
+
+
+### Prior work here for reference:
+objects/best_price_checker_better_imho.rb
+
+objects/best_price_checker_dev3.rb.txt
+
+objects/best_price_checker.rb.txt
+
