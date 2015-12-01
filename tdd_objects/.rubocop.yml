@@ -3,6 +3,3 @@ AllCops:
    - "Guardfile"
    - "Gemfile"
    - "homework_tester/**/*"
-   - "tdd_objects/Guardfile"
-   - "tdd_objects/Gemfile"
-
